@@ -1,6 +1,6 @@
 {
-    "name": "day_tick",
-    "short_name": "day_tick",
+    "name": "Day Tick",
+    "short_name": "Day Tick",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -70,7 +70,7 @@ class Home extends StatelessWidget {
           ),
         ),
         backgroundColor: kappbarcolour,
-        leadingWidth: 160,
+        leadingWidth: 220,
      leading: Padding(
        padding: const EdgeInsets.only(left: 8),
        child: GestureDetector(

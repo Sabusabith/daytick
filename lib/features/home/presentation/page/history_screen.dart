@@ -98,8 +98,47 @@ Future<void> pickHistoryDate() async {
     if (historyList.isEmpty) {
       return Scaffold(
         backgroundColor: kbgcolor,
-        body:  Center(
-          child: Text("No History Yet", style: GoogleFonts.publicSans(color: Colors.white)),
+        body:  SafeArea(bottom: false,
+          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20,),
+                  /// TOP BAR
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Colors.white70,
+                        size: 18,
+                      ),
+                    ),
+                    const SizedBox(width: 30),
+                    Text(
+                      "History",
+                      style: GoogleFonts.catamaran(
+                        color: kprimerycolor,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+            
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text("No History Yet", style: GoogleFonts.publicSans(color: Colors.white)),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }

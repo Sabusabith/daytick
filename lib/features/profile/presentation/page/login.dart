@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter/foundation.dart';
 class UserPrefs {
   static const String keyName = "name";
   static const String keyAge = "age";
@@ -126,8 +126,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: CircleAvatar(
                               radius: 48,
                               backgroundColor: Colors.white10,
-                              backgroundImage: imagePath != null
-                                  ? FileImage(File(imagePath!))
+                            backgroundImage: imagePath != null
+                                  ? (kIsWeb
+                                        ? NetworkImage(imagePath!)
+                                        : FileImage(File(imagePath!))
+                                              as ImageProvider)
                                   : null,
                               child: imagePath == null
                                   ? const Icon(

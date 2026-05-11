@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/foundation.dart';
 
 class UserPrefs {
   static const String keyName = "name";
@@ -137,10 +138,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 child: CircleAvatar(
                                   radius: 45,
                                   backgroundColor: kgreencolor,
-                                  backgroundImage:
+                                 backgroundImage:
                                       (savedImage != null &&
                                           savedImage.toString().isNotEmpty)
-                                      ? FileImage(File(savedImage))
+                                      ? (kIsWeb
+                                            ? NetworkImage(savedImage)
+                                            : FileImage(File(savedImage))
+                                                  as ImageProvider)
                                       : null,
                                   child:
                                       (savedImage == null ||

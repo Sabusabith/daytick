@@ -12,6 +12,7 @@ import 'package:day_tick/features/profile/presentation/page/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
 class Home extends StatelessWidget {
@@ -94,8 +95,10 @@ class Home extends StatelessWidget {
                     CircleAvatar(
                       radius: 16,
                       backgroundColor: Colors.white10,
-                      backgroundImage: (imagePath != null && imagePath != "")
-                          ? FileImage(File(imagePath))
+                    backgroundImage: (imagePath != null && imagePath != "")
+                          ? (kIsWeb
+                                ? NetworkImage(imagePath)
+                                : FileImage(File(imagePath)) as ImageProvider)
                           : null,
                       child: (imagePath == null || imagePath == "")
                           ? const Icon(Icons.person, size: 18, color: Colors.blue)
